@@ -1,6 +1,6 @@
 author: Simqo # 作者
 description: Simqo's blog
-keyword: 编程
+keyword: 编程, PHP
 favicon: 
 
 excerpt_link: Read more
@@ -16,14 +16,14 @@ menu:
 highlight:
   tomorrow
 
-# catalog
+# catalog 目录
 catalog: true
 
-# donate
-donate: true
+# donate 打赏
+donate: false
 
-# qrcode
-qrcode: true
+# qrcode 二维码
+qrcode: false
 
 # comment
 # you can set gitment or uyan
@@ -32,9 +32,9 @@ comment: gitment
 
 # gitment config
 gitment_owner: gaudimark
-gitment_repo: mark.github.io
-gitment_oauth_id: 
-gitment_oauth_secret: 
+gitment_repo: gaudimark.github.io
+gitment_oauth_id: 022cd40514a18d718a8e
+gitment_oauth_secret: 8d3ecdd2aed07f65520e51d5b5afff85af62cadf
 
 # uyan
 # if you want to use uyan as your blog comment, plz remove/comment out gitment config
@@ -43,8 +43,8 @@ baidu_id:
 
 about: 
   banner: http://file.muyutech.com/about.jpg
-  avatar: https://avatars3.githubusercontent.com/u/16443628?v=3&s=460
-  description: "The end is always near."
+  avatar: http://www.youhuas.com/youhua/images/xubeihong_6007.jpg
+  description: "Stay hungry, Stay foolish"  #"The end is always near."
   weibo_username: Simqo
   twitter_username: Simqo
   github_username: Simqo

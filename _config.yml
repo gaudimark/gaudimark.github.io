@@ -79,5 +79,5 @@ theme: vexo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:gaudimark/mark.github.io.git
+  repo: git@github.com:gaudimark/gaudimark.github.io.git
   branch: master
