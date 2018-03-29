@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Simqo</title>
   
-  
+  <subtitle>Pour l&#39;honneur de l&#39;esprit humain</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://mark.github.io/"/>
   <updated>2018-03-28T15:27:35.835Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://mark.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Simqo</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/03/28/hello-world/"/>
-    <id>http://yoursite.com/2018/03/28/hello-world/</id>
+    <link href="https://mark.github.io/2018/03/28/hello-world/"/>
+    <id>https://mark.github.io/2018/03/28/hello-world/</id>
     <published>2018-03-28T15:27:35.833Z</published>
     <updated>2018-03-28T15:27:35.835Z</updated>
     
