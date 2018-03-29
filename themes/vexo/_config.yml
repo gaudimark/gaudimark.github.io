@@ -20,10 +20,10 @@ highlight:
 catalog: true
 
 # donate 打赏
-donate: false
+donate: true
 
 # qrcode 二维码
-qrcode: false
+qrcode: true
 
 # comment
 # you can set gitment or uyan
