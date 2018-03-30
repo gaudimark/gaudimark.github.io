@@ -147,7 +147,15 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"></section>
+    <section class="markdown-content"><p>常用的加密分为对称加密和非对称加密，对称加密就是发送方和接收方都用同一个秘钥进行加密解密，而非对称加密则使用一对公钥和私钥来进行加密，发送发只需要用接收方的公钥将数据加密即可。</p>
+<h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><p>AES是一种常见的对称加密算法，英语：Advanced Encryption Standard，又称Rijndael加密，它是一种分块加密方法，换句话说就是将明文块分成一组组小部分然后进行加密再组合，而根据分组大小可分为：AES-128,AES-196,AES-256三种，对应的分组大小分别是128bit，196bit，256bit。</p>
+<p>而如何将这些明文块进行加密组合，又分为四种模式：ECB、CBC、CFB、OFB，除了第一种模式，后面三种模式都需要一个初始向量iv来辅助加密。初始向量的大小也是同区块大小保持一致，是个固定长度的随机字串，初始向量只是为了给加密算法提供一个可用的种子。</p>
+<p>还有一点是，如果需要加密的源数据长度不是分组大小的整数倍，那么就需要对数据进行填充，一般的填充算法有PKSC5和PKSC7填充算法。举个例子，如果源数据大小是10bytes，如果进行分组，还需要6bytes才能满足分组的要求。那么只需要在后面补上6个6即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x x x x x x x x x x 6 6 6 6 6 6</span><br></pre></td></tr></table></figure>
+<p>如果刚好不用填充，还需要再补齐区块大小个字节，这么做是为了在去除填充数据时，可以准确无误。</p>
+<h2 id="PHP-实现-AES"><a href="#PHP-实现-AES" class="headerlink" title="PHP 实现 AES"></a>PHP 实现 AES</h2><p>随着Mcrypt扩展从 PHP 7.1.0 开始废弃，我们将利用OpenSSL代替Mcrypt实现AES加解密；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public function encrypt_decrypt($action, $string) &#123;</span><br><span class="line">        $output = false;</span><br><span class="line">        $encrypt_method = &quot;AES-256-CBC&quot;;</span><br><span class="line">        $secret_key = &apos;This is my secret key&apos;;</span><br><span class="line">        $secret_iv = &apos;This is my secret iv&apos;;</span><br><span class="line">        $key = hash(&apos;sha256&apos;, $secret_key);</span><br><span class="line">        $iv = substr(hash(&apos;sha256&apos;, $secret_iv), 0, 16);</span><br><span class="line">        if ( $action == &apos;encrypt&apos; ) &#123;</span><br><span class="line">            $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);</span><br><span class="line">            $output = base64_encode($output);</span><br><span class="line">        &#125; else if( $action == &apos;decrypt&apos; ) &#123;</span><br><span class="line">            $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);</span><br><span class="line">        &#125;</span><br><span class="line">        return $output;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -182,23 +190,6 @@
     <!-- NAV END -->
     <!-- 打赏 START -->
     
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
-        </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
-    
     <!-- 打赏 END -->
     <!-- 二维码 START -->
     
@@ -221,7 +212,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AES"><span class="toc-nav-text">AES</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#PHP-实现-AES"><span class="toc-nav-text">PHP 实现 AES</span></a></li></ol>
     
   </div>
 </aside>
