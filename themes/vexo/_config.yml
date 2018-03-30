@@ -20,7 +20,7 @@ highlight:
 catalog: true
 
 # donate 打赏
-donate: true
+donate: false
 
 # qrcode 二维码
 qrcode: true
